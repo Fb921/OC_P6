@@ -9,23 +9,53 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
+    <!-- Entête de la page -->
     <header>
       <a href="./index.html">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page"/>
       </a>
     </header>
+    <!-- Contenu de la page -->
     <main id="main">
+      <!-- Bloc : informations du photographe -->
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()" aria-label="Contact me">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="Boutton contact">Contactez-moi</button>
       </div>
+      <!-- Bloc : Modal de formulaire de contact -->
+      <div id="contact_modal">
+        <div class="modal">
+          <header>
+            <h2>
+              Contactez-moi
+              <div class="modal-photographer-name"></div>
+            </h2> 
+            <img src="assets/icons/close.svg" onclick="closeModal()" alt="close" contenteditable="true"/>
+          </header>
+          <form>
+            <div>
+              <label for="prenom">Prénom</label>
+              <input name="prenom" id="prenom"/>
+              <label for="nom">Nom</label>
+              <input name="nom" id="nom"/>
+              <label for="email">E-mail</label>
+              <input name="email" id ="email" type="mail"/>
+              <label for="message">Votre message</label>
+              <textarea name="message" id="message"></textarea>
+            </div>
+            <!-- Mettre un lien à la place pour ne pas que le formulaire soit envoyé -->
+            <input type="button" class="contact_button" aria-label="envoyer button" value="Envoyer"/>
+          </form>
+        </div>
+      </div>
+      <!-- Bloc : tri des images de la galerie -->
       <div class="trier-par_container">
         <div class="trier-par_txt">Trier par</div>
         <div class="selected-option_container">
           <div class="selected-option_content">
             <span class="selected-option_text" data-current-tri="option1">Popularité</span>
             <span class="up-down-icon_container">
-              <button style="display:none" id="close-trier-menu-arrow" class="fa-solid fa-angle-up" onclick="display_trier_par_menu(event,'c')"></button>
-              <button id="open-trier-menu-arrow" class="fa-solid fa-angle-down" onclick="display_trier_par_menu(event,'o')"></button>
+              <button aria-label="fermer le menu de tri" style="display:none" id="close-trier-menu-arrow" class="fa-solid fa-angle-up" onclick="display_trier_par_menu(event,'c')"></button>
+              <button aria-label="ouvrir le menu de tri" id="open-trier-menu-arrow" class="fa-solid fa-angle-down" onclick="display_trier_par_menu(event,'o')"></button>
             </span>
           </div>
           <div class="tri-option-list" data-open-trier-menu="false">
@@ -35,44 +65,26 @@
           </div>
         </div>
       </div>
+      <!-- Bloc : Galerie d'images -->
+      <div class="gallery_container"></div>
+      <!-- Bloc : Lightbox de galerie d'images -->
+      <div class="img-popup_container" aria-label="image closeup view">
+        <div><button onclick="close_imgPopup()" aria-label="Close dialog"><em class="fa-solid fa-xmark"></em></button></div>
+        <div class="img-popup_content">
+          <div><button onclick="previous_img()" aria-label="Previous image"><em class="fa-solid fa-angle-left"></em></button></div>
+          <div class="img-popup_img-container">
+            <img alt="Lilac breasted roller" contenteditable="true"/>
+            <video alt="Lilac breasted roller" contenteditable="true"></video>
+          </div>
+          <div><button onclick="next_img()" aria-label="Next image"><em class="fa-solid fa-angle-right" ></em></button></div>
+        </div>
+      </div>
+      <!-- Bloc : informations générales -->
       <div class="bloc_infos">
         <div><span class="total_likes"></span> <em class='fas fa-heart'></em></div>
         <div><span class="price_container"></span>€ / jour</div>
       </div>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi
-          <div class="modal-photographer-name"></div></h2> 
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="close" contenteditable="true"/>
-        </header>
-				<form>
-					<div>
-						<label for="prenom">Prénom</label>
-						<input name="prenom" id="prenom"/>
-						<label for="nom">Nom</label>
-						<input name="nom" id="nom"/>
-						<label for="email">E-mail</label>
-						<input name="email" id ="email" type="mail"/>
-						<label for="message">Votre message</label>
-						<textarea name="message" id="message"></textarea>
-					</div>
-          <button class="contact_button" aria-label="envoyer button">Envoyer</button>
-				</form>
-			</div>
-		</div>
-    <div class="img-popup_container" aria-label="image closeup view">
-      <div><button onclick="close_imgPopup()" aria-label="Close dialog"><em class="fa-solid fa-xmark"></em></button></div>
-      <div class="img-popup_content">
-        <div><button onclick="previous_img()" aria-label="Previous image"><em class="fa-solid fa-angle-left"></em></button></div>
-        <div class="img-popup_img-container">
-          <img alt="Lilac breasted roller" contenteditable="true"/>
-          <video alt="Lilac breasted roller" contenteditable="true"></video>
-        </div>
-        <div><button onclick="next_img()" aria-label="Next image"><em class="fa-solid fa-angle-right" ></em></button></div>
-      </div>
-    </div>
     <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>

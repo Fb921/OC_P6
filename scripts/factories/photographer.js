@@ -1,3 +1,4 @@
+/* Function factory sur la page d'index */
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
     const picture = `assets/photographers/${portrait}`;
@@ -40,6 +41,39 @@ function photographerFactory(data) {
     return { name, picture, getUserCardDOM }
 }
 
+/*Function factory pour les infos des photographes*/
+function photographeInfosFactory(data){
+    const {name, city, country, tagline, portrait} = data;
+    const picture = `assets/photographers/${portrait}`;
+    function getInfos(){
+        let bloc_infos = document.createElement('div');
+        let name_container = document.createElement('h1');
+        name_container.textContent = name;
+        console.log("name_container");
+        console.log(name_container);
+        let location_container = document.createElement('div');
+        location_container.textContent = city +", "+country;
+        let tagline_container = document.createElement('div');
+        tagline_container.textContent = tagline;
+        bloc_infos.appendChild(name_container);
+        bloc_infos.appendChild(location_container);
+        bloc_infos.appendChild(tagline_container);
+        console.log("bloc_infos");
+        console.log(bloc_infos);
+        return bloc_infos;
+    }
+    function getProfilePic(){
+        let bloc_profilePic = document.createElement('div');
+        let profilePic_container = document.createElement("img");
+        profilePic_container.setAttribute("src",picture);
+        profilePic_container.setAttribute("alt",name);
+        bloc_profilePic.appendChild(profilePic_container);
+        return bloc_profilePic;
+    }
+    return {getInfos, getProfilePic};
+}
+
+/* Function factory sur la page des photographes */
 function imageFactory(data,id) {
     const { title, image, likes, video } = data;
     let picture;
@@ -48,13 +82,12 @@ function imageFactory(data,id) {
     }else{
         picture = `assets/images/${image}`;
     }
-
-    /*Pourquoi créer le contenu de la page en js ?*/
     function getUserCardDOM() {
         let article = document.createElement("article");
         article.setAttribute("class","gallery_element");
-        let img_container = document.createElement("div");
+        let img_container = document.createElement("button");
         img_container.setAttribute("class","gallery_img-container");
+        img_container.onkeydown = function unf(e){if(e.code == "Enter"){console.log("euh bonjour");display_imgPopup(img)}};
         let img;
         if(picture.indexOf('mp4') > -1){
             img = document.createElement("video");
@@ -63,11 +96,10 @@ function imageFactory(data,id) {
         }
         img.setAttribute('src',picture);
         img.setAttribute('class',"gallery_img");
-        img.setAttribute("alt","Lilac breasted roller, closeup view");
-        img.setAttribute("contenteditable","true");
+        img.setAttribute("alt",title);
+        //img.setAttribute("contenteditable","true");
         img.setAttribute('data-position',id);
         img.onclick = function(){display_imgPopup(img)};
-        img.onkeydown = function unf(e){if(e.code == "Enter"){display_imgPopup(img)}};
         let desc_container = document.createElement('div');
         desc_container.setAttribute("class","desc_container");
         let g_title = document.createElement("div");
@@ -78,7 +110,7 @@ function imageFactory(data,id) {
         let number_like = document.createElement("div");
         number_like.textContent = likes;
         //total_likes += likes;
-        let heart = document.createElement("div");
+        let heart = document.createElement("button");
         heart.setAttribute('aria-label',"likes");
         heart.setAttribute("id","heart_"+id);
         heart.setAttribute("data-liked","false");

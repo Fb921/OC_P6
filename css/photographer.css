@@ -1,26 +1,9 @@
-.img-popup_container button{
-    background-color:transparent;
-    color:#901C1C;
-    font-size:25px;
-    border:none;
-}
-#contact_modal {
-    display:none;
-    position:fixed;
-    width: 100%;
-    height: 100vh;
-    align-content:center;
-    top:0;
-}
-textarea{
-    width:100%;
-    height:170px;
-}
-
 main{
     max-width:1380px;
     margin:auto;
 }
+
+/* Informations sur le photographe */
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -48,6 +31,24 @@ main{
 .photograph-header > div > h1 + div{
     color:#901C1C;
  }
+
+ .contact_button {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    display: inline-block;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 48px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
  .photograph-header > div:nth-child(3){
     height:90%;
     text-align:right;
@@ -61,21 +62,22 @@ main{
     object-fit:cover;
     object-position: center;
 }
-.contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-#contact_modal{
+
+/* Modale du formulaire de contact */
+#contact_modal {
+    display:none;
+    position:fixed;
+    width: 100%;
+    height: 100vh;
+    align-content:center;
+    top:0;
     background-color:rgba(255,255,255,0.9);
+    z-index:20;
+}
+textarea{
+    width:100%;
+    height:170px;
 }
 
 .modal {
@@ -145,10 +147,6 @@ form input {
     text-align:center;
 }
 
-main > div:nth-child(2){
-    margin:20px 100px 0 100px;
-}
-
 main > div:nth-child(2) > select{
     background-color:#901C1C;
     color:white;
@@ -169,10 +167,11 @@ main > div:nth-child(2) > select > option{
 
  }
 
-/*Style tri*/
+/*Style menu tri*/
 .trier-par_container{
     height:40px;
     line-height:40px;
+    margin:50px 100px 0 100px;
 }
 .trier-par_container > div{
     display:inline-block;
@@ -247,6 +246,8 @@ main > div:nth-child(2) > select > option{
     overflow:hidden;
     display:flex;
     align-items:center;
+    padding:0;
+    border:none;
 }
 
 .gallery_img{
@@ -274,7 +275,21 @@ i, em{
 .like_container > div:nth-child(1){
     padding-right:7px;
 }
+button[aria-label="likes"]{
+    font-size:16px;
+    padding:0;
+    background-color:transparent;
+    border:none;
+    height:21px;
+}
+button[data-liked="true"]{
+    color:red;
+}
+button[data-liked="false"]{
+    color:#901C1C;
+}
 
+/*Lightbox*/
 .img-popup_container{
     position:fixed;
     z-index:20;
@@ -286,6 +301,13 @@ i, em{
     flex-direction:column;
     background-color:rgba(255,255,255,0.95);
     display:none;
+}
+
+.img-popup_container button{
+    background-color:transparent;
+    color:#901C1C;
+    font-size:25px;
+    border:none;
 }
 
 .img-popup_container > div:nth-child(1){
@@ -343,60 +365,3 @@ i, em{
 .bloc_infos > div{
   flex:1;
 }
-
-/* .option_container{
-    line-height:40px;
-    height:40px;
-    background-color:#901C1C;
-    color:white;
-    display:inline-block;
-    box-sizing:border-box;
-    vertical-align:top;
-    border-radius:3px;
-}
-
-.option_container > div{
-    height:40px;
-    line-height:40px;
-    padding:0px 25px;
-    display:block;
-    background-color:#901C1C;
-    position:relative;
-    box-sizing:border-box;
-    cursor:pointer;
-    z-index:10;
-}
-
-.option_container > div:hover{
-    background-color:#901C1C30;
-} */
-
-/* .option1{
-    border-radius:3px 3px 0 0;
-}
-.option3{
-    border-radius:0 0 3px 3px;
-}
-
-.option1:after,.option2:after{
-    content:"";
-    background-color:white;
-    width:80%;
-    height:1px;
-    left:10%;
-    position:absolute;
-    bottom:-1px;
-    z-index:3;
-}
-
-.trier_par_container{
-    line-height:40px;
-} */
-
-/* .option_container[data-menu="true"]{
-    overflow:visible;
-}
-
-.option_container[data-menu="false"]{
-    overflow:hidden;
-} */
