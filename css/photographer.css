@@ -281,12 +281,16 @@ button[aria-label="likes"]{
     background-color:transparent;
     border:none;
     height:21px;
-}
-button[data-liked="true"]{
-    color:red;
-}
-button[data-liked="false"]{
     color:#901C1C;
+}
+button[aria-label="likes"] > i:nth-child(1){
+    position:absolute;
+}
+button[data-liked="true"] > i:nth-child(2){
+    opacity:1;
+}
+button[data-liked="false"] > i:nth-child(2){
+    opacity:0;
 }
 
 /*Lightbox*/

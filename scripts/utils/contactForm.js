@@ -9,7 +9,7 @@ function closeModal() {
 }
 
 document.querySelector('form .contact_button').onclick = function (){
-    console.log(document.querySelector('#prenom').value);
     console.log(document.querySelector('#nom').value);
     console.log(document.querySelector('#email').value);
+    console.log(document.querySelector('#message').value);
 }

@@ -49,8 +49,6 @@ function photographeInfosFactory(data){
         let bloc_infos = document.createElement('div');
         let name_container = document.createElement('h1');
         name_container.textContent = name;
-        console.log("name_container");
-        console.log(name_container);
         let location_container = document.createElement('div');
         location_container.textContent = city +", "+country;
         let tagline_container = document.createElement('div');
@@ -58,8 +56,6 @@ function photographeInfosFactory(data){
         bloc_infos.appendChild(name_container);
         bloc_infos.appendChild(location_container);
         bloc_infos.appendChild(tagline_container);
-        console.log("bloc_infos");
-        console.log(bloc_infos);
         return bloc_infos;
     }
     function getProfilePic(){
@@ -87,6 +83,7 @@ function imageFactory(data,id) {
         article.setAttribute("class","gallery_element");
         let img_container = document.createElement("button");
         img_container.setAttribute("class","gallery_img-container");
+        img_container.setAttribute("aria-label",title);
         img_container.onkeydown = function unf(e){if(e.code == "Enter"){console.log("euh bonjour");display_imgPopup(img)}};
         let img;
         if(picture.indexOf('mp4') > -1){
@@ -115,7 +112,7 @@ function imageFactory(data,id) {
         heart.setAttribute("id","heart_"+id);
         heart.setAttribute("data-liked","false");
         heart.onclick = function(){addRemoveLike(heart);}
-        heart.innerHTML = "<i class='fas fa-heart'></i>";
+        heart.innerHTML = "<i class='fa-regular fa-heart'></i><i class='fas fa-heart'></i>";
 
         like_container.appendChild(number_like);
         like_container.appendChild(heart);
