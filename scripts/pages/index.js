@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
     async function getPhotographers() {
         // Penser à remplacer par les données récupérées dans le json
         const photographers1 = [
@@ -19,7 +20,7 @@
                 "price": 250,
                 "portrait": "EllieRoseWilkens.jpg"
             },
-        ]
+        ];
         const photographers2 = [
             {
                 "name": "Tracy Galindo",
@@ -39,7 +40,7 @@
                 "price": 350,
                 "portrait": "NabeelBradford.jpg"
             },
-        ]
+        ];
         const photographers3 = [
             {
                 "name": "Rhode Dubois",
@@ -59,10 +60,10 @@
                 "price": 300,
                 "portrait": "MarcelNikolic.jpg"
             },
-        ]
+        ];
         // et bien retourner le tableau photographers seulement une fois
         return ({
-            photographers: [...photographers1, ...photographers2, ...photographers3]})
+            photographers: [...photographers1, ...photographers2, ...photographers3]});
     }
 
     async function displayData(photographers) {
@@ -73,13 +74,13 @@
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
-    };
+    }
 
     async function init() {
         /*await dans une fonction async permet d'attendre la résolution de la "Promise" (ici getPhotographers())*/
         const { photographers } = await getPhotographers();
         displayData(photographers);
-    };
+    }
     
     init();
     
